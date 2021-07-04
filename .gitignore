@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# 自定义忽略
+.idea/*
+output/*
+temp/*
+material/*
+!/material/123456/
+!/material/icon/0.png

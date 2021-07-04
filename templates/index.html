@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成马甲包</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("output").textContent = window.location.origin + '/output';
+        }
+    </script>
+</head>
+<body>
+<!--上传Excel文件，解析excel文件，并下载图片。展示需要打包的信息-->
+<title>马甲包打包工具</title>
+<h1>马甲包工具</h1>
+<p>查看任务结果：<a id="output" href=/output target="right_body">A</a></p>
+<form method=post enctype=multipart/form-data id="fileUpload">
+    Apk文件： 　<input type=file name=apkFile>
+    <p></p>
+    Config文件：<input type=file name=excelFile>
+    <p></p>
+    <div><input type=submit value='开始任务'></div>
+</form>
+</body>
+</html>
