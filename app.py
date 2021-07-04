@@ -16,17 +16,17 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    return index.handle(request)
-
-
 @app.before_request
 def before_request():
     if request.path.startswith('/output/'):
         return handle_out_put(request.path)
     else:
         return None
+
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    return index.handle(request)
 
 
 @app.route('/output')
