@@ -10,7 +10,7 @@ from multiprocessing import Process
 import ConfigExcelHandler
 import Constants
 import FileUtils
-# apktool程序执行命令
+
 import LogUtils
 
 TAG = "RebuildApk"
