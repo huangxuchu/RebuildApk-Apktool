@@ -8,12 +8,13 @@ description:
 from flask import Flask, request
 
 import Constants
+import config
 import main
-from config import Config
+from config import FlaskConfig
 from web import index, OutputFileBrowser
 
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_object(FlaskConfig)
 
 
 @app.before_request
@@ -38,8 +39,14 @@ def handle_out_put(params):
     return OutputFileBrowser.out_put(params)
 
 
+from gevent import pywsgi
+
 if __name__ == '__main__':
     main.check_and_mkdir(Constants.PATH_MATERIAL)
     main.check_and_mkdir(Constants.PATH_TEMP)
     main.check_and_mkdir(Constants.PATH_OUTPUT)
-    app.run()
+    if FlaskConfig.DEBUG:
+        app.run()
+    else:
+        server = pywsgi.WSGIServer((config.HOST, config.PORT), app)
+        server.serve_forever()
